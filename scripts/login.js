@@ -1,21 +1,37 @@
 "use strict";
 
-const loginForm = document.querySelector("#login");
 
-loginForm.onsubmit = function (event) {
+function login() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
 
-    event.preventDefault();
+    fetch('https://microbloglite.onrender.com/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            localStorage.token = data.token
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+document.addEventListener("DOMContentLoaded", e => {
+    show.addEventListener("click", e => {
+        e.preventDefault()
+        if (password.getAttribute("type") === "password") {
+            password.setAttribute("type", "text")
+        } else {
+            password.setAttribute("type", "password")
+        }
 
-    // We can use loginForm.username (for example) to access
-    // the input element in the form which has the ID of "username".
-    const loginData = {
-        username: loginForm.username.value,
-        password: loginForm.password.value,
-    }
-
-    // Disables the button after the form has been submitted already:
-    loginForm.loginButton.disabled = true;
-
-    // Time to actually process the login using the function from auth.js!
-    login(loginData);
-};
+    })
+})

@@ -13,9 +13,9 @@
     }
     }
     .btn-custom-blue {
-        background-color: #3498db; /* Choose your desired shade of blue */
-        border-color: #3498db; /* Same as background-color for an outline effect */
-        color: #ffffff; /* Text color */
+        background-color: #3498db;
+        border-color: #3498db; 
+        color: #ffffff;
     }
     h4.custom-text-color {
         color: black;
