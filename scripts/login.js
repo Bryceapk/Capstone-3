@@ -19,6 +19,7 @@ function login() {
         .then(data => {
             console.log(data);
             localStorage.token = data.token
+            window.location.href = 'posts.html';
         })
         .catch(error => {
             console.error('Error:', error);
